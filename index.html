@@ -1,0 +1,41 @@
+import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { ShoppingBag } from "lucide-react";
+
+const products = [ { id: 1, name: "Naszyjnik Minimal Gold", price: "249 zł", image: "https://images.unsplash.com/photo-1600180758895-42a04e53d4c4", }, { id: 2, name: "Kolczyki Pearl Drop", price: "189 zł", image: "https://images.unsplash.com/photo-1617038228687-df6d72b4bc20", }, { id: 3, name: "Bransoletka Silver Line", price: "159 zł", image: "https://images.unsplash.com/photo-1603808033192-0818cf7d3515", }, ];
+
+export default function SimplePoint() { return ( <div className="min-h-screen bg-white text-gray-900"> {/* Header */} <header className="flex justify-between items-center px-8 py-6 shadow-md"> <h1 className="text-2xl font-bold tracking-wide">Simple Point</h1> <Button variant="outline" className="flex items-center gap-2"> <ShoppingBag size={18} /> Koszyk </Button> </header>
+
+{/* Hero */}
+  <section className="text-center py-20 bg-gray-50">
+    <h2 className="text-4xl font-semibold mb-4">Minimalistyczna biżuteria</h2>
+    <p className="text-lg text-gray-600 max-w-xl mx-auto">
+      Odkryj kolekcję prostych, eleganckich dodatków, które podkreślą Twój styl.
+    </p>
+    <Button className="mt-6 px-6 py-3 text-lg">Zobacz kolekcję</Button>
+  </section>
+
+  {/* Products */}
+  <main className="grid md:grid-cols-3 gap-8 px-8 py-16 max-w-6xl mx-auto">
+    {products.map((product) => (
+      <Card key={product.id} className="rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-64 object-cover"
+        />
+        <CardContent className="p-4">
+          <h3 className="text-lg font-semibold">{product.name}</h3>
+          <p className="text-gray-600 mb-4">{product.price}</p>
+          <Button className="w-full">Dodaj do koszyka</Button>
+        </CardContent>
+      </Card>
+    ))}
+  </main>
+
+  {/* Footer */}
+  <footer className="bg-gray-100 py-8 text-center text-gray-600">
+    <p>© {new Date().getFullYear()} Simple Point. Wszystkie prawa zastrzeżone.</p>
+  </footer>
+</div>
+
+); }
+
